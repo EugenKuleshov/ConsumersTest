@@ -12,7 +12,11 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <asp:PlaceHolder runat="server">
+        <%: Styles.Render("~/style/datepicker") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -61,5 +65,21 @@
         </div>
 
     </form>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/datepicker") %>
+    </asp:PlaceHolder>
+    <script>
+        function initDatepicker() {
+            $('.datepicker-field').datepicker().on('changeDate', function (e) {
+                $(this).datepicker('hide');
+            });
+        }
+        $(document).ready(function () {
+            initDatepicker();            
+        });
+        $(document).on('shown.bs.modal', function (e) {
+            initDatepicker();
+        })
+    </script>
 </body>
 </html>

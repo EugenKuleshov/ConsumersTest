@@ -11,13 +11,6 @@ body {
     padding-right: 15px;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -59,18 +52,18 @@ a {
 }
 
 /* Table columns align */
-.table-consumers tr td:nth-child(3) { 
+.table-consumers tr td:nth-child(4) { 
     text-align: right;
 }
-.table-consumers tr th:nth-child(3) {
+.table-consumers tr th:nth-child(4) {
     text-align: right;
 }
 
-.table-consumers tr td:nth-child(4) {
+.table-consumers tr td:nth-child(5) {
     text-align: center;
 }
 
-.table-consumers tr th:nth-child(4) {
+.table-consumers tr th:nth-child(5) {
     text-align: center;
 }
 
@@ -78,3 +71,6 @@ a {
     padding: 5px;
 }
 
+.hiddencol {
+    display: none;
+}
