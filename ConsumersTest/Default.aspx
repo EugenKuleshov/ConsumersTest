@@ -5,7 +5,7 @@
         <div class="col-sm-12">
             <asp:UpdatePanel ID="addUpdatePanel" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-                    <div class="pull-right add-link">
+                    <div class="pull-right add-consumer-block">
                         <asp:LinkButton ID="AddConsumerButton"
                             Text="Add consumer"
                             OnClick="AddConsumer_Click"

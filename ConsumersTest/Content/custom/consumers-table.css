@@ -1,0 +1,45 @@
+﻿
+.add-consumer-block {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #f2f2f2;
+}
+
+/* Table columns align */
+.table-consumers tr td:nth-child(4) {
+    text-align: right;
+}
+
+.table-consumers tr th:nth-child(4) {
+    text-align: right;
+}
+
+.table-consumers tr td:nth-child(5) {
+    text-align: center;
+}
+
+.table-consumers tr th:nth-child(5) {
+    text-align: center;
+}
+
+/* Borders */
+.table-consumers {
+    border: 2px solid #000000 !important;
+}
+
+.table-consumers > tbody > tr:not(.grid-pagination) > td + td {
+    border-left: 2px solid #000000 !important;
+}
+.table-consumers th + th {
+    border-left: 2px solid #000000 !important;
+}
+
+/* Header */
+.table-consumers thead{
+    background-color: #cbcbcb!important;
+}

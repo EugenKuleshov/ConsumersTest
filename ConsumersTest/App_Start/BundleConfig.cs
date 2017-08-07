@@ -37,6 +37,10 @@ namespace ConsumersTest
                     "~/Content/bootstrap-datepicker3.css"
                 ));
 
+            bundles.Add(new StyleBundle("~/style/custom")
+                .IncludeDirectory("~/Content/custom", "*.css", true
+                ));
+
             // Use the Development version of Modernizr to develop with and learn from. Then, when you’re
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

@@ -12,7 +12,10 @@ namespace ConsumersTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ConsumersList.HeaderRow.TableSection = TableRowSection.TableHeader;
+            ConsumersList.DataBound += (s, ev) =>
+            {
+                ConsumersList.HeaderRow.TableSection = TableRowSection.TableHeader;
+            };
         }
 
         public IQueryable<Consumer> GetConsumers()
@@ -67,7 +70,7 @@ namespace ConsumersTest
                 FirstName = FirstNameBox.Text,
                 LastName = LastNameBox.Text,
                 Email = EmailBox.Text,
-                DateOfBirth = DateTime.ParseExact(DateOfBirthBox.Text, "M/d/yyyy", CultureInfo.InstalledUICulture)
+                DateOfBirth = DateTime.ParseExact(DateOfBirthBox.Text, "M/d/yyyy", CultureInfo.InvariantCulture)
             };
 
             var client = new ConsumerServiceClient("BasicHttpsBinding_IConsumerService");
