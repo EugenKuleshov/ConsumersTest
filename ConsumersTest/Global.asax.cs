@@ -11,14 +11,11 @@ namespace ConsumersTest
     public class Global : HttpApplication, IContainerProviderAccessor
     {
         // Provider that holds the application container.
-        static IContainerProvider _containerProvider;
+        private static IContainerProvider _containerProvider;
 
         // Instance property that will be used by Autofac HttpModules
         // to resolve and inject dependencies.
-        public IContainerProvider ContainerProvider
-        {
-            get { return _containerProvider; }
-        }
+        public IContainerProvider ContainerProvider => _containerProvider;
 
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -29,7 +26,7 @@ namespace ConsumersTest
             RegisterIoC();
         }
 
-        private void RegisterIoC()
+        private static void RegisterIoC()
         {
             var builder = new ContainerBuilder();
             builder.RegisterModule<AppModule>();
