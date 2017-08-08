@@ -39,7 +39,7 @@
                             <asp:TemplateField HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="DeleteConsumerButton"
-                                        OnClientClick="return confirm('Are you sure you want to delete this event?');"
+                                        data-delete-consumer=""
                                         Text="Delete"
                                         CommandName="Delete"
                                         OnCommand="DeleteConsumer_Command"
@@ -122,6 +122,7 @@
                                     <label class="control-label col-sm-3" for="DateOfBirthBox">Date of birth</label>
                                     <div class="col-sm-9">
                                         <asp:TextBox TextMode="Date" runat="server" placeholder="MM/dd/YYYY" ID="DateOfBirthBox" 
+                                            type="text"
                                             CssClass="form-control datepicker-field"
                                             data-provide="datepicker"
                                             data-date-autoclose="true"/>
@@ -160,5 +161,26 @@
             </asp:UpdatePanel>
         </div>
     </div>
+    
+    <script type="text/javascript">
+
+        $(document).on("click", "[data-delete-consumer]", function () {
+            var $link = $(this);
+            var name = $('td:nth-child(2)', $link.closest('tr')).text();
+
+            var settings = {
+                title: "Delete consumer",
+                message: "Are you sure you delete consumer " + name + "?",
+                transition: "fade",
+                onok: function() {
+                    window.location = $link.attr("href");
+                },
+                oncancel: function(){}
+            }
+            alertify.dialog('confirm').set(settings).show(); 
+            return false;
+        });
+
+    </script>
 
 </asp:Content>

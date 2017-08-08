@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
-using System.Web.UI;
+﻿using System.Web.Optimization;
 
 namespace ConsumersTest
 {
@@ -12,47 +7,42 @@ namespace ConsumersTest
         // For more information on Bundling, visit https://go.microsoft.com/fwlink/?LinkID=303951
         public static void RegisterBundles(BundleCollection bundles)
         {
+            RegisterScriptsBudles(bundles);
+            RegisterStylesBundles(bundles);
+        }
+
+        private static void RegisterScriptsBudles(BundleCollection bundles)
+        {
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
-                            "~/Scripts/WebForms/WebForms.js",
-                            "~/Scripts/WebForms/WebUIValidation.js",
-                            "~/Scripts/WebForms/MenuStandards.js",
-                            "~/Scripts/WebForms/Focus.js",
-                            "~/Scripts/WebForms/GridView.js",
-                            "~/Scripts/WebForms/DetailsView.js",
-                            "~/Scripts/WebForms/TreeView.js",
-                            "~/Scripts/WebForms/WebParts.js"));
+                "~/Scripts/WebForms/WebForms.js",
+                "~/Scripts/WebForms/WebUIValidation.js",
+                "~/Scripts/WebForms/MenuStandards.js",
+                "~/Scripts/WebForms/Focus.js",
+                "~/Scripts/WebForms/GridView.js",
+                "~/Scripts/WebForms/DetailsView.js",
+                "~/Scripts/WebForms/TreeView.js",
+                "~/Scripts/WebForms/WebParts.js"));
 
             // Order is very important for these files to work, they have explicit dependencies
             bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(
-                    "~/Scripts/WebForms/MsAjax/MicrosoftAjax.js",
-                    "~/Scripts/WebForms/MsAjax/MicrosoftAjaxApplicationServices.js",
-                    "~/Scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js",
-                    "~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"));
+                "~/Scripts/WebForms/MsAjax/MicrosoftAjax.js",
+                "~/Scripts/WebForms/MsAjax/MicrosoftAjaxApplicationServices.js",
+                "~/Scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js",
+                "~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                "~/Scripts/bootstrap-datepicker.js",
+                "~/Scripts/alertify.js"
+            ));
+        }
 
-            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
-                    "~/Scripts/bootstrap-datepicker.js"
-                ));
-
-            bundles.Add(new StyleBundle("~/style/datepicker").Include(
-                    "~/Content/bootstrap-datepicker3.css"
-                ));
-
+        private static void RegisterStylesBundles(BundleCollection bundles)
+        {
             bundles.Add(new StyleBundle("~/style/custom")
-                .IncludeDirectory("~/Content/custom", "*.css", true
-                ));
-
-            // Use the Development version of Modernizr to develop with and learn from. Then, when you’re
-            // ready for production, use the build tool at https://modernizr.com to pick only the tests you need
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                            "~/Content/modernizr-*"));
-
-            ScriptManager.ScriptResourceMapping.AddDefinition(
-                "respond",
-                new ScriptResourceDefinition
-                {
-                    Path = "~/Scripts/respond.min.js",
-                    DebugPath = "~/Scripts/respond.js",
-                });
+                .Include("~/Content/bootstrap-datepicker3.css")
+                .Include("~/Content/alertifyjs/alertify.css",
+                         "~/Content/alertifyjs/themes/bootstrap.css")
+                .IncludeDirectory("~/Content/custom", "*.css", true));
         }
     }
 }
