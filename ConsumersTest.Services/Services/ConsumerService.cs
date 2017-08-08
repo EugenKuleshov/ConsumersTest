@@ -1,10 +1,11 @@
-﻿using ConsumersTest.Services.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ConsumersTest.Services.DTO;
-using ConsumersTest.Wcf.Contracts.Services;
 using ConsumersTest.Services.Services.Base;
 using AutoMapper;
-using ConsumersTest.Wcf.Contracts.Data;
+using ConsumersTest.Services.Interfaces;
+
+using IConsumerWcfService = ConsumersTest.Wcf.ConsumerServiceReference.IConsumerService;
+using Consumer = ConsumersTest.Wcf.ConsumerServiceReference.Consumer;
 
 namespace ConsumersTest.Services.Services
 {

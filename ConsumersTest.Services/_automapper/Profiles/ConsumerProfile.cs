@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ConsumersTest.Services.DTO;
-using ConsumersTest.Wcf.Contracts.Data;
+using ConsumersTest.Wcf.ConsumerServiceReference;
 
 namespace ConsumersTest.Services._automapper.Profiles
 {
@@ -11,7 +11,8 @@ namespace ConsumersTest.Services._automapper.Profiles
             CreateMap<Consumer, ConsumerDTO>()
                 .ForMember(dest => dest.FullName, opt => opt.ResolveUsing(src => $"{src.FirstName} {src.LastName}"));
 
-            CreateMap<ConsumerDTO, Consumer>();
+            CreateMap<ConsumerDTO, Consumer>()
+                .ForMember(dest => dest.ExtensionData, opt => opt.Ignore());
         }
     }
 }

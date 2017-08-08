@@ -21,7 +21,7 @@
             <asp:UpdatePanel ID="gridUpdatePanel" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
                     <asp:GridView ID="ConsumersList" runat="server" AutoGenerateColumns="False" ShowFooter="false" GridLines="Vertical" CellPadding="4"
-                        ItemType="ConsumersTest.ConsumerServiceReference.Consumer" SelectMethod="GetConsumers"
+                        ItemType="ConsumersTest.Services.DTO.ConsumerDTO" SelectMethod="GetConsumers"
                         CssClass="table table-striped table-bordered table-consumers"
                         AllowPaging="true" PageSize="5">
                         <PagerSettings Mode="NumericFirstLast"
@@ -33,11 +33,7 @@
 
                         <Columns>
                             <asp:BoundField DataField="ConsumerId" HeaderText="ConsumerId" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                            <asp:TemplateField HeaderText="Name">
-                                <ItemTemplate>
-                                    <asp:Label ID="fullNameLabel" runat="server" Text='<%# $"{Item.FirstName} {Item.LastName}"%>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:BoundField DataField="FullName" HeaderText="Name"/>
                             <asp:BoundField DataField="Email" HeaderText="Email" />
                             <asp:BoundField DataField="DateOfBirth" HeaderText="Date Of Birth" DataFormatString="{0:d}" />
                             <asp:TemplateField HeaderText="Actions">

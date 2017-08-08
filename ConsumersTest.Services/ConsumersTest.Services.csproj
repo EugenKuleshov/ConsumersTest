@@ -61,13 +61,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsumersTest.Wcf.Contracts\ConsumersTest.Wcf.Contracts.csproj">
+    <ProjectReference Include="..\ConsumersTest.Wcf.Contracts\ConsumersTest.Wcf.csproj">
       <Project>{f6ddeef3-d55e-407d-8e60-4e63fb10bbce}</Project>
-      <Name>ConsumersTest.Wcf.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ConsumersTest.Wcf.Proxies\ConsumersTest.Wcf.Proxies.csproj">
-      <Project>{6e615f00-2074-4f0f-8954-85b0f1ac1e85}</Project>
-      <Name>ConsumersTest.Wcf.Proxies</Name>
+      <Name>ConsumersTest.Wcf</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

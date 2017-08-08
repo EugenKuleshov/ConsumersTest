@@ -17,7 +17,8 @@ namespace ConsumersTest
         {
             ConsumersList.DataBound += (s, ev) =>
             {
-                ConsumersList.HeaderRow.TableSection = TableRowSection.TableHeader;
+                if(ConsumersList.HeaderRow != null)
+                    ConsumersList.HeaderRow.TableSection = TableRowSection.TableHeader;
             };
         }
 
@@ -32,7 +33,7 @@ namespace ConsumersTest
             var button = (LinkButton)sender;
             var gridRow = (GridViewRow)button.NamingContainer;
             var consumerId = int.Parse(gridRow.Cells[0].Text);
-            var consumerName = ((Label)gridRow.Cells[1].FindControl("fullNameLabel")).Text;
+            var consumerName = gridRow.Cells[1].Text;
 
             ConsumerIdField.Value = consumerId.ToString();
             deleteModalBody.Text = $"Are you sure you want to delete {consumerName}";

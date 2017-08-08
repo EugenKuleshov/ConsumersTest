@@ -346,9 +346,9 @@
       <Project>{2fa55d15-9146-4561-af21-44c2129cb59b}</Project>
       <Name>ConsumersTest.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ConsumersTest.Wcf.Contracts\ConsumersTest.Wcf.Contracts.csproj">
+    <ProjectReference Include="..\ConsumersTest.Wcf.Contracts\ConsumersTest.Wcf.csproj">
       <Project>{f6ddeef3-d55e-407d-8e60-4e63fb10bbce}</Project>
-      <Name>ConsumersTest.Wcf.Contracts</Name>
+      <Name>ConsumersTest.Wcf</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
