@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Web.UI;
-using ConsumersTest.ConsumerServiceReference;
 using System.Linq;
 using System.Web.UI.WebControls;
 using ConsumersTest.Infrastructure.Extension;
 using System.Globalization;
+using ConsumersTest.Services.Interfaces;
+using ConsumersTest.Services.DTO;
 
 namespace ConsumersTest
 {
     public partial class _Default : Page
     {
+        public IConsumerService ConsumerService { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ConsumersList.DataBound += (s, ev) =>
@@ -18,10 +21,9 @@ namespace ConsumersTest
             };
         }
 
-        public IQueryable<Consumer> GetConsumers()
+        public IQueryable<ConsumerDTO> GetConsumers()
         {
-            var client = new ConsumerServiceClient("BasicHttpsBinding_IConsumerService");
-            var consumers = client.GetAll().AsQueryable();
+            var consumers = ConsumerService.GetAll().AsQueryable();
             return consumers;
         }
 
@@ -42,8 +44,7 @@ namespace ConsumersTest
         protected void DeleteConsumer_Click(object sender, EventArgs e)
         {
             var consumerId = int.Parse(ConsumerIdField.Value);
-            var client = new ConsumerServiceClient("BasicHttpsBinding_IConsumerService");
-            client.Delete(consumerId);
+            ConsumerService.Delete(consumerId);
 
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "delete-modal", "$('#delete-modal').modal('hide');", true);
             ConsumersList.DataBind();
@@ -65,16 +66,14 @@ namespace ConsumersTest
 
         protected void SubmitConsumer_Click(object sender, EventArgs e)
         {
-            var consumer = new Consumer()
+            var consumer = new ConsumerDTO()
             {
                 FirstName = FirstNameBox.Text,
                 LastName = LastNameBox.Text,
                 Email = EmailBox.Text,
                 DateOfBirth = DateTime.ParseExact(DateOfBirthBox.Text, "M/d/yyyy", CultureInfo.InvariantCulture)
             };
-
-            var client = new ConsumerServiceClient("BasicHttpsBinding_IConsumerService");
-            client.Add(consumer);
+            ConsumerService.Add(consumer);
 
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "add-modal", "$('#add-modal').modal('hide');", true);
             ConsumersList.DataBind();

@@ -139,16 +139,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ConsumerServiceReference\ConsumerService.disco" />
-    <None Include="Connected Services\ConsumerServiceReference\configuration91.svcinfo" />
-    <None Include="Connected Services\ConsumerServiceReference\configuration.svcinfo" />
-    <Content Include="Connected Services\ConsumerServiceReference\ConsumersTest.ConsumerServiceReference.Consumer.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\ConsumerServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap-datepicker.standalone.css" />
@@ -174,16 +164,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Connected Services\ConsumerServiceReference\ConsumerService.wsdl" />
-    <None Include="Connected Services\ConsumerServiceReference\ConsumerService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ConsumerServiceReference\ConsumerService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ConsumerServiceReference\ConsumerService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -309,11 +289,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Connected Services\ConsumerServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,12 +342,13 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ConsumerServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ConsumersTest.Services\ConsumersTest.Services.csproj">
       <Project>{2fa55d15-9146-4561-af21-44c2129cb59b}</Project>
       <Name>ConsumersTest.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsumersTest.Wcf.Contracts\ConsumersTest.Wcf.Contracts.csproj">
+      <Project>{f6ddeef3-d55e-407d-8e60-4e63fb10bbce}</Project>
+      <Name>ConsumersTest.Wcf.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
