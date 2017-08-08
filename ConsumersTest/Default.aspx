@@ -66,6 +66,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-horizontal">
+
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for="email">First name</label>
                                     <div class="col-sm-9">
@@ -80,8 +81,6 @@
                                         </asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-horizontal">
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for="email">Last name</label>
                                     <div class="col-sm-9">
@@ -96,8 +95,6 @@
                                         </asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-horizontal">
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for="email">Email</label>
                                     <div class="col-sm-9">
@@ -121,8 +118,6 @@
                                         </asp:RegularExpressionValidator>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-horizontal">
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for="email">Date of birth</label>
                                     <div class="col-sm-9">
@@ -142,9 +137,10 @@
                                             ErrorMessage="Please, enter date in format MM/dd/YYYY"
                                             ForeColor="Red"
                                             Display="Dynamic"
-                                            ValidationGroup="ConsumerValidators"/>
+                                            ValidationGroup="ConsumerValidators" />
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="modal-footer">
