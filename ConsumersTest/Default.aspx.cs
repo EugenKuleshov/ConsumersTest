@@ -70,7 +70,6 @@ namespace ConsumersTest
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "add-modal", "$('#add-modal').modal('hide');", true);
             ConsumersListGrid.DataBind();
             gridUpdatePanel.Update();
-
         }
 
         protected void DeteOfBirth_ServerValidate(object source, ServerValidateEventArgs args)

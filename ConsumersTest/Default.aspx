@@ -68,7 +68,7 @@
                             <div class="form-horizontal">
 
                                 <div class="form-group">
-                                    <label class="control-label col-sm-3" for="email">First name</label>
+                                    <label class="control-label col-sm-3" for="<%= FirstNameBox.ClientID %>">First name</label>
                                     <div class="col-sm-9">
                                         <asp:TextBox runat="server" ID="FirstNameBox" CssClass="form-control" />
                                         <asp:RequiredFieldValidator
@@ -82,7 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-3" for="email">Last name</label>
+                                    <label class="control-label col-sm-3" for="<%= LastNameBox.ClientID %>">Last name</label>
                                     <div class="col-sm-9">
                                         <asp:TextBox runat="server" ID="LastNameBox" CssClass="form-control" />
                                         <asp:RequiredFieldValidator
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-3" for="email">Email</label>
+                                    <label class="control-label col-sm-3" for="<%= EmailBox.ClientID %>">Email</label>
                                     <div class="col-sm-9">
                                         <asp:TextBox runat="server" placeholder="Enter email" ID="EmailBox" CssClass="form-control" />
                                         <asp:RequiredFieldValidator
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-3" for="DateOfBirthBox">Date of birth</label>
+                                    <label class="control-label col-sm-3" for="<%= DateOfBirthBox.ClientID %>">Date of birth</label>
                                     <div class="col-sm-9">
                                         <asp:TextBox TextMode="Date" runat="server" placeholder="MM/dd/YYYY" ID="DateOfBirthBox" 
                                             type="text"
