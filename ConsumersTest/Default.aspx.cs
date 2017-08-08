@@ -17,9 +17,9 @@ namespace ConsumersTest
         {
             ConsumersListGrid.DataBound += (s, ev) =>
             {
-                if(ConsumersListGrid.HeaderRow != null)
+                if (ConsumersListGrid.HeaderRow != null)
                     ConsumersListGrid.HeaderRow.TableSection = TableRowSection.TableHeader;
-            };            
+            };
         }
 
         public IQueryable<ConsumerDTO> GetConsumers()
@@ -46,7 +46,7 @@ namespace ConsumersTest
                 .All()
                 .OfType<TextBox>();
 
-            foreach (var textBox in textBoxes)            
+            foreach (var textBox in textBoxes)
                 textBox.Text = string.Empty;
 
             addModalUpdatePanel.Update();
@@ -55,21 +55,22 @@ namespace ConsumersTest
 
         protected void SubmitConsumer_Click(object sender, EventArgs e)
         {
-            if (Page.IsValid)
-            {
-                var consumer = new ConsumerDTO()
-                {
-                    FirstName = FirstNameBox.Text,
-                    LastName = LastNameBox.Text,
-                    Email = EmailBox.Text,
-                    DateOfBirth = DateTime.ParseExact(DateOfBirthBox.Text, "M/d/yyyy", CultureInfo.InvariantCulture)
-                };
-                ConsumerService.Add(consumer);
+            if (!Page.IsValid)
+                return;
 
-                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "add-modal", "$('#add-modal').modal('hide');", true);
-                ConsumersListGrid.DataBind();
-                gridUpdatePanel.Update();
-            }            
+            var consumer = new ConsumerDTO()
+            {
+                FirstName = FirstNameBox.Text,
+                LastName = LastNameBox.Text,
+                Email = EmailBox.Text,
+                DateOfBirth = DateTime.ParseExact(DateOfBirthBox.Text, "M/d/yyyy", CultureInfo.InvariantCulture)
+            };
+            ConsumerService.Add(consumer);
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "add-modal", "$('#add-modal').modal('hide');", true);
+            ConsumersListGrid.DataBind();
+            gridUpdatePanel.Update();
+
         }
 
         protected void DeteOfBirth_ServerValidate(object source, ServerValidateEventArgs args)
