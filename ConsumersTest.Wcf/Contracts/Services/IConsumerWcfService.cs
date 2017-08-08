@@ -1,8 +1,8 @@
-﻿using ConsumersTest.Services.Wcf.Contracts.Data;
+﻿using ConsumersTest.Wcf.Contracts.Data;
 using System.Collections.Generic;
 using System.ServiceModel;
 
-namespace ConsumersTest.Services.Wcf.Contracts.Services
+namespace ConsumersTest.Wcf.Contracts.Services
 {
     [ServiceContract]
     interface IConsumerWcfService

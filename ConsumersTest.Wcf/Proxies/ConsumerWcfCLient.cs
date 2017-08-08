@@ -1,9 +1,9 @@
-﻿using ConsumersTest.Services.Wcf.Contracts.Services;
+﻿using ConsumersTest.Wcf.Contracts.Data;
+using ConsumersTest.Wcf.Contracts.Services;
 using System.Collections.Generic;
 using System.ServiceModel;
-using ConsumersTest.Services.Wcf.Contracts.Data;
 
-namespace ConsumersTest.Services.Wcf.Proxies
+namespace ConsumersTest.Wcf.Proxies
 {
     internal class ConsumerWcfClient : ClientBase<IConsumerWcfService>, IConsumerWcfService
     {

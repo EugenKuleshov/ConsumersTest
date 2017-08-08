@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace ConsumersTest.Services.Wcf.Contracts.Data
+namespace ConsumersTest.Wcf.Contracts.Data
 {
     [DataContract]
     public class Consumer
@@ -21,5 +21,4 @@ namespace ConsumersTest.Services.Wcf.Contracts.Data
         [DataMember]
         public DateTime DateOfBirth { get; set; }
     }
-
 }
