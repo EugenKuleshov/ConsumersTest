@@ -8,7 +8,11 @@ namespace ConsumersTest.Wcf._IoC
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(c => new ConsumerWcfClient("BasicHttpsBinding_IConsumerService"))
+            builder.Register(c =>
+            {
+                var consumerClient = new ConsumerWcfClient("BasicHttpsBinding_IConsumerService");
+                return consumerClient;
+            })
                 .As<IConsumerWcfService>()
                 .InstancePerLifetimeScope();
         }
