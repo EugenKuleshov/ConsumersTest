@@ -52,6 +52,7 @@
     <Compile Include="Interfaces\IConsumerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConsumerService.cs" />
+    <Compile Include="_automapper\Profiles\ConsumerProfile.cs" />
     <Compile Include="_IoC\AutomapperModule.cs" />
     <Compile Include="_IoC\ServicesModule.cs" />
   </ItemGroup>
