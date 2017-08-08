@@ -57,18 +57,5 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/datepicker") %>
     </asp:PlaceHolder>
-    <script>
-        function initDatepicker() {
-            $('.datepicker-field').datepicker().on('changeDate', function (e) {
-                $(this).datepicker('hide');
-            });
-        }
-        $(document).ready(function () {
-            initDatepicker();            
-        });
-        $(document).on('shown.bs.modal', function (e) {
-            initDatepicker();
-        })
-    </script>
 </body>
 </html>

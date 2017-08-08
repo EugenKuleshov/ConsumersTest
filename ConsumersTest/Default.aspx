@@ -119,9 +119,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-3" for="email">Date of birth</label>
+                                    <label class="control-label col-sm-3" for="DateOfBirthBox">Date of birth</label>
                                     <div class="col-sm-9">
-                                        <asp:TextBox TextMode="Date" runat="server" placeholder="MM/dd/YYYY" ID="DateOfBirthBox" CssClass="form-control datepicker-field" />
+                                        <asp:TextBox TextMode="Date" runat="server" placeholder="MM/dd/YYYY" ID="DateOfBirthBox" 
+                                            CssClass="form-control datepicker-field"
+                                            data-provide="datepicker"
+                                            data-date-autoclose="true"/>
                                         <asp:RequiredFieldValidator
                                             ControlToValidate="DateOfBirthBox"
                                             ID="DateOfBirthBoxRequiredFieldValidator" runat="server"
