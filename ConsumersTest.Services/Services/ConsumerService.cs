@@ -1,30 +1,45 @@
 ﻿using ConsumersTest.Services.Interfaces;
-using System;
 using System.Collections.Generic;
 using ConsumersTest.Services.DTO;
+using ConsumersTest.Wcf.Contracts.Services;
+using ConsumersTest.Services.Services.Base;
+using AutoMapper;
+using ConsumersTest.Wcf.Contracts.Data;
 
 namespace ConsumersTest.Services.Services
 {
-    internal class ConsumerService : IConsumerService
+    internal class ConsumerService : AbstractService, IConsumerService
     {
-        public void Add(ConsumerDTO consumer)
+        private IConsumerWcfService _consumerWcfService;
+        
+        public ConsumerService(IMapper mapper, IConsumerWcfService consumerWcfService) : base(mapper)
         {
-            throw new NotImplementedException();
+            _consumerWcfService = consumerWcfService;
+        }
+
+        public void Add(ConsumerDTO consumerDTO)
+        {
+            var consumer = Mapper.Map<Consumer>(consumerDTO);
+            _consumerWcfService.Add(consumer);
         }
 
         public void Delete(int consumerId)
         {
-            throw new NotImplementedException();
+            _consumerWcfService.Delete(consumerId);
         }
 
         public ConsumerDTO Get(int consumerId)
         {
-            return new ConsumerDTO() { Email = "test"};
+            var consumer = _consumerWcfService.Get(consumerId);
+            var consumerDTO = Mapper.Map<ConsumerDTO>(consumer);
+            return consumerDTO;
         }
 
-        public List<ConsumerDTO> GetAll()
+        public IList<ConsumerDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var consumers = _consumerWcfService.GetAll();
+            var consumersDTO = Mapper.Map<IList<ConsumerDTO>>(consumers);
+            return consumersDTO;
         }
     }
 }

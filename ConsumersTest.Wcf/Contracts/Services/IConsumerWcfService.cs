@@ -5,7 +5,7 @@ using System.ServiceModel;
 namespace ConsumersTest.Wcf.Contracts.Services
 {
     [ServiceContract]
-    interface IConsumerWcfService
+    public interface IConsumerWcfService
     {
         [OperationContract]
         List<Consumer> GetAll();

@@ -5,12 +5,12 @@ namespace ConsumersTest.Services.Interfaces
 {
     public interface IConsumerService
     {
-        List<ConsumerDTO> GetAll();
+        IList<ConsumerDTO> GetAll();
 
         ConsumerDTO Get(int consumerId);
 
         void Delete(int consumerId);
 
-        void Add(ConsumerDTO consumer);
+        void Add(ConsumerDTO consumerDTO);
     }
 }
