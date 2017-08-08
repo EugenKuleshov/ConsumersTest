@@ -9,8 +9,18 @@ namespace ConsumersTest.Services._IoC
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterModule<WcfModule>();
+            RegisterModules(builder);
+            RegisterServices(builder);            
+        }
 
+        private void RegisterModules(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new AutomapperModule(ThisAssembly));
+            builder.RegisterModule<WcfModule>();
+        }
+
+        private void RegisterServices(ContainerBuilder builder)
+        {
             builder.RegisterType<ConsumerService>()
                 .As<IConsumerService>()
                 .InstancePerLifetimeScope();
