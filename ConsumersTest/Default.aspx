@@ -20,7 +20,7 @@
         <div class="col-sm-12">
             <asp:UpdatePanel ID="gridUpdatePanel" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-                    <asp:GridView ID="ConsumersList" runat="server" AutoGenerateColumns="False" ShowFooter="false" GridLines="Vertical" CellPadding="4"
+                    <asp:GridView ID="ConsumersListGrid" runat="server" AutoGenerateColumns="False" ShowFooter="false" GridLines="Vertical" CellPadding="4"
                         ItemType="ConsumersTest.Services.DTO.ConsumerDTO" SelectMethod="GetConsumers"
                         CssClass="table table-striped table-bordered table-consumers"
                         AllowPaging="true" PageSize="5">
@@ -33,14 +33,16 @@
 
                         <Columns>
                             <asp:BoundField DataField="ConsumerId" HeaderText="ConsumerId" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                            <asp:BoundField DataField="FullName" HeaderText="Name"/>
+                            <asp:BoundField DataField="FullName" HeaderText="Name" />
                             <asp:BoundField DataField="Email" HeaderText="Email" />
                             <asp:BoundField DataField="DateOfBirth" HeaderText="Date Of Birth" DataFormatString="{0:d}" />
                             <asp:TemplateField HeaderText="Actions">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="TryDeleteConsumerButton"
+                                    <asp:LinkButton ID="DeleteConsumerButton"
+                                        OnClientClick="return confirm('Are you sure you want to delete this event?');"
                                         Text="Delete"
-                                        OnClick="TryDeleteConsumer_Click"
+                                        CommandName="Delete"
+                                        OnCommand="DeleteConsumer_Command"
                                         runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -52,38 +54,10 @@
         </div>
     </div>
 
-    <!-- Delete Dialog -->
-    <div class="modal fade" id="delete-modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <asp:UpdatePanel ID="deleteModalUpdatePanel" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
-                <ContentTemplate>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Delete consumer</h4>
-                        </div>
-                        <div class="modal-body">
-                            <asp:Label ID="deleteModalBody" runat="server" Text=""></asp:Label>
-                        </div>
-                        <div class="modal-footer">
-                            <asp:HiddenField ID="ConsumerIdField" runat="server"></asp:HiddenField>
-                            <asp:Button ID="DeleteConsumerButton"
-                                Text="Yes"
-                                OnClick="DeleteConsumer_Click"
-                                CssClass="btn btn-danger"
-                                runat="server" />
-                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">No</button>
-                        </div>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-    </div>
-
     <!-- Add Dialog -->
     <div class="modal fade" id="add-modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <asp:UpdatePanel ID="addModalUpdatePanel" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+            <asp:UpdatePanel ID="addModalUpdatePanel" runat="server" ChildrenAsTriggers="true" UpdateMode="Conditional">
                 <ContentTemplate>
                     <div class="modal-content">
                         <div class="modal-header">
@@ -101,6 +75,7 @@
                                             ID="FirstNameRequiredValidator" runat="server"
                                             ErrorMessage="First name is required!"
                                             ForeColor="Red"
+                                            Display="Dynamic"
                                             ValidationGroup="ConsumerValidators">
                                         </asp:RequiredFieldValidator>
                                     </div>
@@ -116,6 +91,7 @@
                                             ID="LastNameRequiredValidator" runat="server"
                                             ErrorMessage="Last name is required!"
                                             ForeColor="Red"
+                                            Display="Dynamic"
                                             ValidationGroup="ConsumerValidators">
                                         </asp:RequiredFieldValidator>
                                     </div>
@@ -131,6 +107,7 @@
                                             ID="EmailRequiredValidator" runat="server"
                                             ErrorMessage="Email is required!"
                                             ForeColor="Red"
+                                            Display="Dynamic"
                                             ValidationGroup="ConsumerValidators">
                                         </asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="regexEmailValid"
@@ -139,6 +116,7 @@
                                             ControlToValidate="EmailBox"
                                             ErrorMessage="Invalid Email Format"
                                             ForeColor="Red"
+                                            Display="Dynamic"
                                             ValidationGroup="ConsumerValidators">
                                         </asp:RegularExpressionValidator>
                                     </div>
@@ -151,11 +129,20 @@
                                         <asp:TextBox TextMode="Date" runat="server" placeholder="MM/dd/YYYY" ID="DateOfBirthBox" CssClass="form-control datepicker-field" />
                                         <asp:RequiredFieldValidator
                                             ControlToValidate="DateOfBirthBox"
-                                            ID="RequiredFieldValidator1" runat="server"
+                                            ID="DateOfBirthBoxRequiredFieldValidator" runat="server"
                                             ErrorMessage="Date of birthBox is required!"
                                             ForeColor="Red"
+                                            Display="Dynamic"
                                             ValidationGroup="ConsumerValidators">
                                         </asp:RequiredFieldValidator>
+                                        <asp:CustomValidator runat="server"
+                                            ID="dateFormatValidator"
+                                            ControlToValidate="DateOfBirthBox"
+                                            OnServerValidate="DeteOfBirth_ServerValidate"
+                                            ErrorMessage="Please, enter date in format MM/dd/YYYY"
+                                            ForeColor="Red"
+                                            Display="Dynamic"
+                                            ValidationGroup="ConsumerValidators"/>
                                     </div>
                                 </div>
                             </div>

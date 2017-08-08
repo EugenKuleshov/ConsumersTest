@@ -40,49 +40,13 @@ namespace ConsumersTest {
         protected global::System.Web.UI.UpdatePanel gridUpdatePanel;
         
         /// <summary>
-        /// ConsumersList control.
+        /// ConsumersListGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ConsumersList;
-        
-        /// <summary>
-        /// deleteModalUpdatePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel deleteModalUpdatePanel;
-        
-        /// <summary>
-        /// deleteModalBody control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label deleteModalBody;
-        
-        /// <summary>
-        /// ConsumerIdField control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField ConsumerIdField;
-        
-        /// <summary>
-        /// DeleteConsumerButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeleteConsumerButton;
+        protected global::System.Web.UI.WebControls.GridView ConsumersListGrid;
         
         /// <summary>
         /// addModalUpdatePanel control.
@@ -166,13 +130,22 @@ namespace ConsumersTest {
         protected global::System.Web.UI.WebControls.TextBox DateOfBirthBox;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// DateOfBirthBoxRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator DateOfBirthBoxRequiredFieldValidator;
+        
+        /// <summary>
+        /// dateFormatValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator dateFormatValidator;
         
         /// <summary>
         /// SubmitConsumerButton control.
