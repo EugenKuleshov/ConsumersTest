@@ -10,7 +10,7 @@
 namespace ConsumersTest {
     
     
-    public partial class _Default {
+    public partial class _Consumers {
         
         /// <summary>
         /// addUpdatePanel control.

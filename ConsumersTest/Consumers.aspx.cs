@@ -9,7 +9,7 @@ using ConsumersTest.Services.DTO;
 
 namespace ConsumersTest
 {
-    public partial class _Default : Page
+    public partial class _Consumers : Page
     {
         public IConsumerService ConsumerService { get; set; }
 
