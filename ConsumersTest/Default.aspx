@@ -121,7 +121,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for="<%= DateOfBirthBox.ClientID %>">Date of birth</label>
                                     <div class="col-sm-9">
-                                        <asp:TextBox TextMode="Date" runat="server" placeholder="MM/dd/YYYY" ID="DateOfBirthBox" 
+                                        <asp:TextBox runat="server" placeholder="MM/dd/YYYY" ID="DateOfBirthBox" 
                                             type="text"
                                             CssClass="form-control datepicker-field"
                                             data-provide="datepicker"
