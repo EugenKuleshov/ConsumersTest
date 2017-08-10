@@ -1,9 +1,6 @@
 ﻿using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsumersTest.DataAccess.Infrastructure;
+using ConsumersTest.DataAccess.Infrastructure.Interfaces;
 
 namespace ConsumersTest.DataAccess._IoC
 {
@@ -11,7 +8,27 @@ namespace ConsumersTest.DataAccess._IoC
     {
         protected override void Load(ContainerBuilder builder)
         {
-            base.Load(builder);
+            builder.Register(c => new AppConfigConnectionFactory("ConsumerDbString"))
+                .As<IConnectionFactory>()
+                .SingleInstance();
+
+            builder.RegisterType<AdoNetContext>()
+                .As<IDataContext>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<AdoNetUnitOfWork>()
+                .As<IUnitOfWork>()
+                .InstancePerLifetimeScope();
+
+            RegisterRepositories(builder);
+        }
+
+        private void RegisterRepositories(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(ThisAssembly)
+                .Where(type => type.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
         }
     }
 }

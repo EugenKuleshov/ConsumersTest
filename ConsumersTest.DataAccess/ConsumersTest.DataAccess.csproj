@@ -49,17 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Consumer.cs" />
     <Compile Include="Infrastructure\AdoNetContext.cs" />
     <Compile Include="Infrastructure\AdoNetUnitOfWork.cs" />
     <Compile Include="Infrastructure\AppConfigConnectionFactory.cs" />
+    <Compile Include="Infrastructure\Extensions\DbCommandExtensions.cs" />
     <Compile Include="Infrastructure\Interfaces\IConnectionFactory.cs" />
-    <Compile Include="Infrastructure\Interfaces\IContext.cs" />
+    <Compile Include="Infrastructure\Interfaces\IDataContext.cs" />
     <Compile Include="Infrastructure\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\AbstractRepository.cs" />
+    <Compile Include="Repositories\ConsumerRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IConsumerRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="_IoC\DataAccessModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,11 +9,11 @@ using Consumer = ConsumersTest.Wcf.ConsumerServiceReference.Consumer;
 
 namespace ConsumersTest.Services.Services
 {
-    internal class ConsumerService : AbstractService, IConsumerService
+    internal class ConsumerWcfSourceService : AbstractService, IConsumerService
     {
         private IConsumerWcfService _consumerWcfService;
         
-        public ConsumerService(IMapper mapper, IConsumerWcfService consumerWcfService) : base(mapper)
+        public ConsumerWcfSourceService(IMapper mapper, IConsumerWcfService consumerWcfService) : base(mapper)
         {
             _consumerWcfService = consumerWcfService;
         }

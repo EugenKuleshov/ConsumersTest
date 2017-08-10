@@ -2,7 +2,7 @@
 
 namespace ConsumersTest.DataAccess.Infrastructure.Interfaces
 {
-    public interface IContext
+    public interface IDataContext
     {
         IUnitOfWork CreateUnitOfWork();
         IDbCommand CreateCommand();

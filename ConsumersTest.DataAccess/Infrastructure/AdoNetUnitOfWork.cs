@@ -1,4 +1,6 @@
-﻿using ConsumersTest.DataAccess.Infrastructure.Interfaces;
+﻿using Autofac;
+using ConsumersTest.DataAccess.Infrastructure.Interfaces;
+using ConsumersTest.DataAccess.Repositories.Interfaces;
 using System;
 using System.Data;
 
@@ -12,15 +14,24 @@ namespace ConsumersTest.DataAccess.Infrastructure
 
         private readonly Action<AdoNetUnitOfWork> _committed;
 
-        public AdoNetUnitOfWork(IDbTransaction transaction, Action<AdoNetUnitOfWork> rolledBack, Action<AdoNetUnitOfWork> committed)
+        private readonly ILifetimeScope _lifeTimeScope;
+
+        public AdoNetUnitOfWork(IDbTransaction transaction, Action<AdoNetUnitOfWork> rolledBack, Action<AdoNetUnitOfWork> committed, ILifetimeScope lifetimeScope)
         {
             Transaction = transaction;
             _transaction = transaction;
             _rolledBack = rolledBack;
             _committed = committed;
+
+            _lifeTimeScope = lifetimeScope;
         }
 
         public IDbTransaction Transaction { get; private set; }
+
+        public T ResolveRepository<T>() where T: IRepository
+        {
+            return _lifeTimeScope.Resolve<T>();
+        }
 
         public void Dispose()
         {
@@ -30,7 +41,7 @@ namespace ConsumersTest.DataAccess.Infrastructure
             _transaction.Dispose();
             _rolledBack(this);
             _transaction = null;
-        }
+        }        
 
         public void SaveChanges()
         {

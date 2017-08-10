@@ -1,18 +1,17 @@
 ﻿using AutoMapper;
+using ConsumersTest.DataAccess.Entities;
 using ConsumersTest.Services.DTO;
-using ConsumersTest.Wcf.ConsumerServiceReference;
 
 namespace ConsumersTest.Services._automapper.Profiles
 {
-    internal class ConsumerProfile: Profile
+    internal class ConsumerDataAccessProfile : Profile
     {
-        public ConsumerProfile()
+        public ConsumerDataAccessProfile()
         {
             CreateMap<Consumer, ConsumerDTO>()
                 .ForMember(dest => dest.FullName, opt => opt.ResolveUsing(src => $"{src.FirstName} {src.LastName}"));
 
-            CreateMap<ConsumerDTO, Consumer>()
-                .ForMember(dest => dest.ExtensionData, opt => opt.Ignore());
+            CreateMap<ConsumerDTO, Consumer>();
         }
     }
 }
